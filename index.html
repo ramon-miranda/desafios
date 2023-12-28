@@ -10,29 +10,22 @@
  </body>
  </html>
  <script>
-    var altura = parseFloat(prompt("Insira a altura (em metros):"));
-    var peso = parseFloat(prompt("Insira o peso (em quilogramas):"));
+    let soma = 0;
+    let quantidade = 0;
 
-    var imc = peso / (altura ** 2);
-    console.log("O seu IMC é:", imc);
+    while (true) {
+        let valor = parseFloat(prompt("Insira um valor (insira um valor negativo para encerrar):"));
 
-    if (imc < 18.5) {
-    console.log("Abaixo do peso");
-    } 
-    else if (imc >= 18.5 && imc < 25) {
-    console.log("Peso normal");
+    if (valor < 0) {
+        break;
     }
-    else if (imc >= 25 && imc < 30) {
-    console.log("Sobrepeso");
+
+    soma += valor;
+    quantidade++;
+
+    const media = soma / quantidade;
+    console.log(`Soma: ${soma}, Média: ${media}`);
     }
-    else if (imc >= 30 && imc < 35) {
-    console.log("Obesidade grau 1");
-    } 
-    else if (imc >= 35 && imc < 40) {
-    console.log("Obesidade grau 2");
-    }
-    else {
-    console.log("Obesidade grau 3");
-    }
+    console.log("Programa encerrado.");
     
  </script>
