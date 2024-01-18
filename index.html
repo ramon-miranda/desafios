@@ -10,22 +10,43 @@
  </body>
  </html>
  <script>
-    let soma = 0;
-    let quantidade = 0;
 
-    while (true) {
-        let valor = parseFloat(prompt("Insira um valor (insira um valor negativo para encerrar):"));
+function SimuladorVeiculo(marca, modelo, ano, combustivel, velocidadeAtual) {
+    this.marca = marca;
+    this.modelo = modelo;
+    this.ano = ano;
+    this.combustivel = combustivel;
+    this.velocidadeAtual = velocidadeAtual || 0; 
+}
 
-    if (valor < 0) {
-        break;
-    }
+SimuladorVeiculo.prototype.exibirInfo = function() {
+    console.log(`Veículo: ${this.marca} ${this.modelo} (${this.ano})`);
+    console.log(`Combustível: ${this.combustivel}`);
+    console.log(`Velocidade Atual: ${this.velocidadeAtual} km/h`);
+};
 
-    soma += valor;
-    quantidade++;
+SimuladorVeiculo.prototype.acelerar = function(velocidade) {
+    this.velocidadeAtual += velocidade;
+    console.log(`Acelerando para ${this.velocidadeAtual} km/h`);
+};
+  
+function iniciarSimuladorVeiculo() {
 
-    const media = soma / quantidade;
-    console.log(`Soma: ${soma}, Média: ${media}`);
-    }
-    console.log("Programa encerrado.");
-    
+    const marca = prompt("Informe a marca do veículo:");
+    const modelo = prompt("Informe o modelo do veículo:");
+    const ano = prompt("Informe o ano do veículo:");
+    const combustivel = prompt("Informe o tipo de combustível do veículo:");
+
+    const meuVeiculo = new SimuladorVeiculo(marca, modelo, ano, combustivel);
+
+    meuVeiculo.exibirInfo();
+
+    const aceleracao = parseFloat(prompt("Digite a quantidade de aceleração (em km/h):"));
+    meuVeiculo.acelerar(aceleracao);
+
+    console.log("Informações finais do veículo:");
+    meuVeiculo.exibirInfo();
+}
+
+iniciarSimuladorVeiculo();
  </script>
